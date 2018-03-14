@@ -1,3 +1,7 @@
+/**
+ * Created by diogo on 13/12/2018.
+ */
+
 #ifndef STRUCTURES_ARRAY_STACK_H
 #define STRUCTURES_ARRAY_STACK_H
 
@@ -15,21 +19,21 @@ public:
 
     ~ArrayStack();
 
-    void push(const T& data); // empilha
+    void push(const T& data); // push in array
 
-    T pop(); // desempilha
+    T pop(); 
 
     T& top();
 
-    void clear(); // limpa
+    void clear(); // clear the stack
 
-    std::size_t size(); // tamanho
+    std::size_t size(); // return size the stack
 
-    std::size_t max_size();
+    std::size_t max_size(); // return the stack max size value
 
-    bool empty(); // vazia
+    bool empty(); // boolean return true if stack is empty()
 
-    bool full(); // cheia
+    bool full(); // boolean return true if stack is full()
 
 private:
     T* contents;
