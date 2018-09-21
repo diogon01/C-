@@ -101,28 +101,16 @@ void structures::LinkedStack<T>::clear() {
      top_ = nullptr;
 }
 
-/* Adciona na piha */
+/* Adciona na pilha */
 template<typename T>
 void structures::LinkedStack<T>::push(const T& data) {
-     if (empty()) {
-         Node *novoElemento = new Node(data, top_);
-         if (novoElemento == nullptr) {
-             throw std::out_of_range("Pilha esta cheia");
-         } else {
-             top_ = novoElemento;
-             size_ += 1;
-         }
-         size_ += 1;
-     } else {
-          Node *novoElemento = new Node(data, top_);
-         if (novoElemento == nullptr) {
-             throw std::out_of_range("Pilha esta cheia");
-         } else {
-             top_ = novoElemento;
-             size_ += 1;
-         }
-         size_ += 1;
-    }
+     Node *novoElemento = new Node(data, top_);
+      if (novoElemento == nullptr) {
+                throw std::out_of_range("Erro: a pilha está cheia!");
+            } else {
+                top_ = novoElemento;
+                size_ += 1;
+            }
 }
 
 /* Remove da pilha */
