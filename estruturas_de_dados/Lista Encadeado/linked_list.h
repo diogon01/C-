@@ -1,4 +1,4 @@
-//! Tarefa de Estruturas de Dados - Lista em Vetor
+//! Tarefa de Estruturas de Dados - Lista Encadeada
 /*
 \author Diogo Henrique - Matricula 16203891
 \since 19/09/2018
