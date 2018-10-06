@@ -3,16 +3,18 @@
 #include <cstdint>
 #include <stdexcept>
 #include <string>
-#include "validarTag.h"
+#include "array_stack.h"
 
 using namespace structures;
 
 int main () {
   
+  ArrayStack<std::string > *validar = new ArrayStack<std::string >();
   std::string line;
-  std::ifstream myfile ("dataset01.xml");
-  
-  ValidarTag<std::string > *validar;
+  char xmlfilename[100];
+  char c;
+  std::cin >> xmlfilename;
+  std::ifstream myfile (xmlfilename);
   //! char que vai receber os caracteres do XML 
   char c;
   //! Laço de repetiçao que vai rodar ate finalizar as tags
