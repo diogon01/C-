@@ -9,11 +9,14 @@
 #ifndef STRUCTURES_ARRAY_STACK_H
 #define STRUCTURES_ARRAY_STACK_H
 
-#include <cstdint>
+
 #include <stdexcept>
 
+
+const int DEFAULT_SIZE = 10;
+
 namespace structures {
-//! Declarando typename antes da classe
+//!...
 template<typename T>
 class ArrayStack {
  public:
@@ -45,13 +48,12 @@ class ArrayStack {
     int top_;
     std::size_t max_size_;
 
-    static const auto DEFAULT_SIZE = 10u;
 };
 
 //! Construtor da classe sem parametro */
 template<typename T>
-structures::ArrayStack<T>::ArrayStack() {	 	  	 	     	    	   	  	     	   	     	 	
-    top_ = 0;
+structures::ArrayStack<T>::ArrayStack() {
+    top_ = -1u;
     max_size_ = DEFAULT_SIZE;
     contents = new T[max_size_];
 }
@@ -59,7 +61,7 @@ structures::ArrayStack<T>::ArrayStack() {
 /** Novo construtor **/
 template<typename T>
 structures::ArrayStack<T>::ArrayStack(std::size_t max) {
-    top_ = 0;
+    top_ = 1u;
     max_size_ = max;
     contents = new T[max_size_];
 }
@@ -87,8 +89,8 @@ template<typename T>
 T structures::ArrayStack<T>::pop() {
     if (empty()) {
         throw std::out_of_range("Pilha vazia");
-    } else {	 	  	 	     	    	   	  	     	   	     	 	
-        top_--;
+    } else {
+        top_ = top_-1;
         return contents[top_];
     }
 }
@@ -99,7 +101,7 @@ T& structures::ArrayStack<T>::top() {
     if (empty()) {
         throw std::out_of_range("Pilha Vazia");
     }
-    return contents[top_ -1];
+    return contents[top_];
 }
 
 /** Limpa a Pilha **/
@@ -122,26 +124,16 @@ std::size_t structures::ArrayStack<T>::max_size() {
 /** Verifica se a pilha esta vazia **/
 template<typename T>
 bool structures::ArrayStack<T>::empty() {
-     return top_ == -1;
-}	 	  	 	     	    	   	  	     	   	     	 	
+     return top_ == -1u;
+}
 
 /** Verifica se a pilha esta cheia **/
 template<typename T>
 bool structures::ArrayStack<T>::full() {
-    return top_ == max_size_;
+    return top_ == max_size_ -1u;
 }
 
 }  // namespace structures
 
 
 #endif
-
-
-
-
-
-
-
-
-
-
