@@ -76,7 +76,7 @@ void structures::ArrayQueue<T>::enqueue(const T& data){
 
 /*Remove o dado da fila */
 template <typename T>
-T& structures::ArrayQueue<T>::dequeue(){
+T structures::ArrayQueue<T>::dequeue(){
 	if(empty()){
 		throw std::out_of_range("A fila esta vazia");
 	}

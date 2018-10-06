@@ -44,23 +44,24 @@ class DoublyLinkedList {
     bool empty() const;
     //! Retorna true se o dado contém
     bool contains(const T& data) const;
-    //! Acesso um elemento da posição (checando limites) 
+    //! Acesso um elemento da posição (checando limites)
     T& at(std::size_t index);
     //! getter constante a um elemento
     const T& at(std::size_t index) const;
     //! Retorna a posição de um dado
     std::size_t find(const T& data) const;
     //! Retorna o tamanho da lista
-    std::size_t size() const; // tamanho
+    std::size_t size() const;
 private:
+
     class Node {
     public:
         Node(const T& data);
         Node(const T& data, Node* next);
         Node(const T& data, Node* prev, Node* next);
 
-        T& data();
-        const T& data() const;
+        T& data()
+        const T& data() const
 
         Node* prev()
         const Node* prev() const
@@ -91,12 +92,14 @@ structures::DoublyLinkedList<T>::DoublyLinkedList() {
 }
 
 //! Destrutor da classe */
+template<typename T>
 structures::DoublyLinkedList<T>::~DoublyLinkedList() {
     clear();
 }
 
 //! limpa lista */
-void structures::DoublyLinkedList<T>::clear(){
+template<typename T>
+void structures::DoublyLinkedList<T>::clear() {
     Node *atual, *anterior;
         atual = head;
         while (atual != nullptr) {
@@ -111,7 +114,7 @@ void structures::DoublyLinkedList<T>::clear(){
 //! insere no fim
 template<typename T>
 void structures::DoublyLinkedList<T>::push_back(const T& data) {
-
+    insert(data, size_);
 }
 
 //! insere no início
