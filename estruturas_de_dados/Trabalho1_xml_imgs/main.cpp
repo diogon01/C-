@@ -9,6 +9,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstring>
+#include <string>
 #include <fstream>
 #include "array_stack.h"
 
@@ -20,8 +21,8 @@ int main() {
     std::string line;
     char xmlfilename[100];
     char c;
-    std::cin >> xmlfilename;
-    std::ifstream myfile (xmlfilename);
+    //std::cin >> xmlfilename;
+    std::ifstream myfile ("dataset01.xml");
   //! Laço de repetiçao que vai rodar ate finalizar as tags
   while (myfile.get(c)) {
     //! Abertura de Tag XML
@@ -51,8 +52,51 @@ int main() {
   if(!validar->empty()) {
     throw std::out_of_range("Uma existem tags ainda para serem validadas");
   }
-  myfile.close();          
+  myfile.close();
+  
+  
+  //! Parte dois do trabalho verificar a vizinhança de 4 
+  std::ifstream vizinhanca ("dataset01.xml");
+  std::string valores, nome, data;
+  int altura, largura;
+  while (vizinhanca.get(c)){
+    if(c == '<') {
+      
+      line = "";
+      while (vizinhanca.get(c) && c != '>') {
+        //! Concatenar melhor depois
+        line = line + c;
+      }
+
+    }
+    if (c == '>') {
+      char fimtag = line.at(0);
+      if (fimtag == '/') {
+        if(line == "/name") {
+          nome = valores;
+        }
+        if (line == "/height") {
+          altura = std::stoi(valores);
+        }
+        if (line == "/width") {
+          largura = std::stoi(valores);
+        }
+        valores = "";
+        if (nome != "" && altura != NULL && 
+        largura != NULL && line == "data" ) {
+          while (vizinhanca.get(c) && c != '>') {
+            
+          }
+        }
+      }
+    }
+    if (c != '<' && c != '>' && c != '\n') {
+      valores = valores + c;
+    }
     
-    
-    return 0;
+  }
+
+  vizinhanca.close();     
+  
+  return 0;
 }
