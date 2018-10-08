@@ -17,12 +17,12 @@ using namespace structures;
 
 int main() {
     
-    ArrayStack<std::string > *validar = new ArrayStack<std::string >();
-    std::string line;
-    char xmlfilename[100];
-    char c;
-    //std::cin >> xmlfilename;
-    std::ifstream myfile ("dataset01.xml");
+  ArrayStack<std::string > *validar = new ArrayStack<std::string >();
+  std::string line;
+  char xmlfilename[100];
+  char c;
+  std::cin >> xmlfilename;
+  std::ifstream myfile (xmlfilename);
   //! Laço de repetiçao que vai rodar ate finalizar as tags
   while (myfile.get(c)) {
     //! Abertura de Tag XML
@@ -84,8 +84,21 @@ int main() {
         valores = "";
         if (nome != "" && altura != NULL && 
         largura != NULL && line == "data" ) {
+          //! Declara Array Bidimensional para tratar a imagem
+          char **imagem;
+          imagem =  new char*[altura];
+          imagem[altura] = new char[largura];
+          
+          for (int i = 0; i < altura; i++) {
+               
+               for (int j = 0; j < largura; j++) {
+                  //char teste = vizinhanca.get(c);
+                  //imagem[i][j] = vizinhanca.get(c);
+               }
+          }
+
           while (vizinhanca.get(c) && c != '>') {
-            
+          
           }
         }
       }
